@@ -29,12 +29,10 @@ This is a Flask-based e-commerce application designed for both managers and user
    ```bash
    git clone https://github.com/Grocery-Store-Modern-Application-Project.git
    cd Grocery-Store-Modern-Application-Project
-
 2.Create and activate a virtual environment:
   ```bash
   python -m venv env
   source env/bin/activate  # On Windows: .\env\Scripts\activate
-
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
