@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Category</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Edit Category</h2>
+        <form method="POST" action="{{ url_for('edit_category', id=category.id) }}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Category Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ category.name }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="id" class="form-label">Category ID</label>
+                <input type="number" class="form-control" id="id" name="id" value="{{ category.id }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Category</button>
+        </form>
+    </div>
+</body>
+</html>

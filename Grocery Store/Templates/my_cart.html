@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cart</title>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:darkblue;">
+        <a class="navbar-brand" href="#">My cart</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/user_dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user_logout">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/purchasehistory">Purchase History</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container mt-5">
+        <h2 style="text-align:center">My Cart</h2>
+        {% if cart_items %}
+        <table class="table table-striped" >
+            <thead>
+                <tr style="background-color:orange;">
+                    <th>Product Name</th>
+                    <th>Quantity (in Kg/lit)</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cart_item in cart_items %}
+                <tr>
+                    <td>{{ cart_item.product.name }}</td>
+                    <td>{{ cart_item.quantity }}</td>
+                    <td>Rs.{{ cart_item.product.price }}/{{ cart_item.product.unit }}</td>
+                    <td>Rs. {{ cart_item.product.price * cart_item.quantity }}</td>
+                    <td><a href="/remove_cart_item">Remove</a></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3"><strong>Total Price</strong></td>
+                    <td><strong>Rs. {{ total_price }}</strong></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><strong>Grand Total</strong></td>
+                    <td style="background-color: aqua;"><strong>Rs. {{ grand_total }}</strong></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <form action='/buy' method="post">
+            <a href="/buy">
+                <button type="submit" class="btn btn-primary">Buy All</button>
+            </a>
+        </form>
+        <p class="text-center mt-4">
+            <a href="user_dashboard" class="btn btn-outline-primary btn-lg">Back to Dashboard</a>
+        </p>
+        {% else %}
+        <p style="color:brown;text-align:center;padding:5%;font-size:22px;">No product available</p>
+        <p style="color:blue;text-align:center;font-size:22px;">
+            <a href="/user_dashboard" class="btn btn-outline-primary btn-lg">Buy Now!</a>
+        </p>
+        {% endif %}
+    </div>
+</body>
+</html>

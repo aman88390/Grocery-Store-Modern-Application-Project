@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grocery Store WebApp</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .carousel-caption {
+            background-color:rgb(92, 94, 97,0.5);
+            padding: 5px;
+            font-size: 20px;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .carousel-inner img {
+            max-height: 500px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="#"><b>Grocery Store</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Manager_login">Admin Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user_login">User Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user_dashboard">Products</a>
+                    </li>
+                </ul>
+
+                <form action="{{url_for('search_page')}}" class="d-flex">
+                    <input  type="text" class="form-control me-1" name="query" placeholder="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <p class="h3">"From Nature's Bounty to Your Table, Embrace the Freshness!"</p>
+                <hr style="width: 50%; border: 2px solid #f58220;">
+                <p class="lead">Welcome to our Grocery Store, where quality meets freshness. We are committed to bringing
+                    you the best produce from local farms and around the world. Explore our wide range of fresh fruits,
+                    vegetables, and pantry essentials that will inspire your culinary journey. Start your delightful
+                    shopping experience now and savor the goodness of nature in every bite.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="static\image.png" class="d-block w-100" alt="Image 1">
+                <div class="carousel-caption">
+                    <p><em>"Freshness and Quality, Delivered to Your Table!"</em></p>
+                    <a href="/user_login"><button type="submit" class="btn btn-primary">Buy Now</button></a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="static\image2.webp" class="d-block w-100" alt="Image 2">
+                <div class="carousel-caption">
+                    <p><em>"Discover the Richness of Nature's Bounty in Every Bite."</em></p>
+                    <a href="/user_login"><button type="submit" class="btn btn-primary">Buy Now</button></a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="static\image3.png" class="d-block w-100" alt="Image 3">
+                <div class="carousel-caption">
+                    <p><em>"Cultivate Health and Happiness with Our Fresh Selection."</em></p>
+                    <a href="/user_login"><button type="submit" class="btn btn-primary">Buy Now</button></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

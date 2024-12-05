@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Quantity</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card {
+            border-radius: 15px;
+        }
+        .card-header {
+            background-color: #f8f9fa;
+        }
+        .quantity-label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .rate-label {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:darkblue;">
+        <a class="navbar-brand" href="#">User's Dashboard</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/my_cart">My Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user_logout">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/purchasehistory">Purchase History</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center" style="background-color:ivory;">
+                        <h2 class="mb-0">Select Quantity for {{ product.name }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ url_for('add_to_cart', product_id=product.product_id) }}" method="post">
+                            <div class="form-group">
+                                <label class="quantity-label" for="quantity">Quantity:</label>
+                                <input type="number" class="form-control" name="quantity" id="quantity" required>
+                            </div>
+                            <p class="rate-label">Rate: {{ product.price }}/{{ product.unit }}</p>
+
+                            <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center align-items-center vh-10">
+    {% if message %}
+                       
+    <li style="color:red; font-size:18px; padding: 3px;">
+        {{ message }}
+    </li>
+  
+
+{% endif %}</div>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <p class="text-center">
+                    <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Welcome Message for New User</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                padding: 20px;
+                background-color: #f8f9fa;
+            }
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                text-align: center;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Hello, {{name}} {{lname}}! Thankyou for registering</h1>
+            <p>Please <a href="/user_login">Click Here</a> to go to your User Login.</p>
+        </div>
+
+    </body>
+</html>

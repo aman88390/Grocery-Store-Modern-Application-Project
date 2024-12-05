@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="#">User's Dashboard</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/my_cart">My Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user_dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user_logout">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/purchasehistory">Purchase History</a>
+            </li>
+        </ul>
+    </nav>
+    <button type="submit" style="padding:0cm; margin:1%"> <a href="/user_dashboard" style="margin:2%">Back</a></button>
+    <div class="container mt-4">
+        <h2>Search Results for "{{ query }}"</h2>
+        <div class="row">
+            {% if categories %}
+                {% for category in categories %}
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-header text-dark bg-success">
+                                <h4>{{ category.name }}</h4>
+                            </div>
+                            <div class="card-body">
+                                {% if category.products %}
+                                    <ul class="list-group">
+                                        {% for product in category.products %}
+                                            <li class="list-group-item">
+                                                <h3>{{ product.name }}</h3>
+                                                <p> Rs.{{ product.price }} {{ product.unit }} <br>
+                                                    {% if product.stock > 0 %}
+                                                        Available Stock: {{ product.stock }}
+                                                        <p><a href="{{ url_for('add_cart', product_id=product.product_id)}}" class="btn btn-sm btn-primary">Add to Cart</a>
+                                                    {% else %}
+                                                        <span class="text-danger"><h5 style="color:red">Out of Stock</h5></span>
+                                                    {% endif %}</p>
+                                                </p>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p>No products in this category yet.</p>
+                                {% endif %}
+                            
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if products %}
+                {% for product in products %}
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-header text-dark bg-danger">
+                                <h4>{{ product.name }}</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Price: Rs.{{ product.price }} {{ product.unit }}</p>
+                                <p>
+                                    {% if product.stock > 0 %}
+                                     Available Stock: {{ product.stock }}<br>
+                                     Expiry Date: {{product.exp}}
+                                   <p><a href="{{ url_for('add_cart', product_id=product.product_id)}}" class="btn btn-sm btn-primary">Add to Cart</a></p>
+                                    {% else %}
+                                    <span class="text-danger"><h5 style="color:red">Out of Stock</h5></span>
+                                    {% endif %}</p>
+                                    
+                                </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if product_price %}
+                {% for product in product_price %}
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-header text-dark bg-primary">
+                                <h4>{{ product.name }}</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Price: Rs.{{ product.price }} {{ product.unit }}</p>
+                                <p>
+                                    {% if product.stock > 0 %}
+                                     Available Stock: {{ product.stock }}<br>
+                                     Expiry Date: {{product.exp}}
+                                   <p><a href="{{ url_for('add_cart', product_id=product.product_id)}}" class="btn btn-sm btn-primary">Add to Cart</a></p>
+                                    {% else %}
+                                    <span class="text-danger"><h5 style="color:red">Out of Stock</h5></span>
+                                    {% endif %}</p>
+                                    
+                                </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if not categories and not products and not product_price %}
+                <div class="col">
+                    <p>No results found for "{{ query }}".</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

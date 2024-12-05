@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:darkblue;">
+        <a class="navbar-brand" href="#">Purchase History</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/my_cart">My Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user_dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user_logout">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Purchase History</h2>
+        {% if purchase_history %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                        <th>Purchase Date and time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for purchase in purchase_history %}
+                        <tr>
+                            <td>{{ purchase.product_name }}</td>
+                            <td>{{ purchase.quantity }}</td>
+                            <td>{{ purchase.price }}</td>
+                            <td>Rs {{ purchase.price * purchase.quantity }}</td>
+                            <td>{{ purchase.purchase_date}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No purchase history available.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
