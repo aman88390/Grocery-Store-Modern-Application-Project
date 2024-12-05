@@ -40,7 +40,7 @@ Usage
      
 
 3. Install the required packages using: `pip install Flask Flask-SQLAlchemy Jinja2 matplotlib`.
-4. Run the app: `python app.py`.
+4. Run the app: `python yadav.py`.
 5. Access the app in your web browser at http://localhost:5000.
 6. Log in as a manager using the credentials: Username: `aman`, Password: `1234`.
 
