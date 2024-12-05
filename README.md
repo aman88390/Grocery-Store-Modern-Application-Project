@@ -31,12 +31,15 @@ This is a Flask-based e-commerce application designed for both managers and user
    cd Grocery-Store-Modern-Application-Project
 
 2.Create and activate a virtual environment:
+  ````bash
   python -m venv env
   source env/bin/activate  # On Windows: .\env\Scripts\activate
 
 3. Install dependencies:
+   ```bash
    pip install -r requirements.txt
 4. Run application:
+   ```bash
    python app.py
    
 
